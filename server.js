@@ -1,16 +1,12 @@
-var http = require('http');
-
-
+const express = require("express");
+const app = express();
 const PORT = 8080;
+app.set("view engine", "ejs");
 
-function handleRequest(request, response){
-    response.end('Path Hit: ' + request.url);
-}
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
-var server = http.createServer(handleRequest);
-
-
-server.listen(PORT, function(){
-
-    console.log("Server listening on: http://localhost:%s", PORT);
+app.listen(PORT, () => {
+  console.log("App listening on port " + PORT);
 });
