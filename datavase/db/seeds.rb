@@ -7,11 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'species.csv'))
+# csv_text = File.read(Rails.root.join('lib', 'seeds', 'species.csv'))
+# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#   t = Plant.new
+#   t.name = row['name']
+#   t.description = row['description']
+#   t.save
+# end
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'map.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  t = Plant.new
-  t.name = row['name']
-  t.description = row['description']
-  t.save
+  map = MapMarker.new
+  map.lat = row['lat']
+  map.lng = row['lng']
+  name = row['name']
+  plant = Plant.find_by_name(name)
+  map.plant_id = plant.id
+  map.save
 end
