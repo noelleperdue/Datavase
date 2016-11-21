@@ -3,12 +3,16 @@
   <head>
     <title>Datavase</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/top_nav' %>
+    <main class="container">
+      <%= yield %>
+    </main>
+
+    <%= yield :end_of_body %>
   </body>
 </html>
