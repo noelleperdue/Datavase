@@ -39,7 +39,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="intro">
-                        <h1 class="text-center">Species Name</h1><img class="img-responsive" src="assets/img/torino_google-map.png"></div>
+                        <h1 class="text-center">Species Name</h1></div>
+                        <div id="map"></div>
+                            <iframe
+                                width="750"
+                                height="450"
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOpQEt3Vl880BqM5ahlmvtuI7_0bDbiqI
+                                &q=Toronto+ON" allowfullscreen>
+                            </iframe>
+                            <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+                            </script>
                     <div class="text">
                         <p>Sed lobortis mi. Suspendisse vel placerat ligula. <span style="text-decoration: underline;">Vivamus</span> ac sem lac. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in
                             justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
