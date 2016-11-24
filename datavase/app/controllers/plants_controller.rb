@@ -6,6 +6,7 @@ class PlantsController < ApplicationController
 
   def show
     @plant = Plant.find params[:id]
+    @markers = MapMarker.where(plant_id: @plant.id)
   end
 
 end

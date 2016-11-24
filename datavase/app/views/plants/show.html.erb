@@ -3,24 +3,40 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="intro">
-          <h1 class="text-center"><%= @plant.name %></h1><div id="map" style="width:100%;height:500px"></div>
+          <h1 class="text-center"><%= @plant.name %></h1>
+          <div id="map" style="width:100%;height:500px"></div>
 
+          <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3DUM5CR4xb_xQeOKJ5ISMIskwBGxIloc&libraries=visualization&callback=initMap">
+          </script>
 <script>
-function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.2538, -85.3232),
-    zoom: 10
+function initMap() {
+  var map = new google.maps.Map(document.getElementById("map"), {
+    center: new google.maps.LatLng(44.6082, -79.4197),
+    zoom: 7,
+    mapTypeId: 'terrain'
+  });
+
+  var heatmapData = [];
+
+  function mapData(lat, lng) {
+    var latLng = new google.maps.LatLng(lat, lng);
+    heatmapData.push(latLng);
   }
-  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatmapData,
+    dissipating: true,
+    map: map
+  });
+
+  <% @markers.each do |marker| %>
+    mapData(<%= marker.lat %>, <%= marker.lng%>);
+  <% end %>
 }
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script><img class="img-responsive" src="assets/img/torino_google-map.png"></div>
-
-        <div class="text">
+       <div class="text">
           <p><%= @plant.description%></p>
-          <figure><img src="assets/img/dogstrangler.jpg"></figure>
+
         </div>
       </div>
     </div>
