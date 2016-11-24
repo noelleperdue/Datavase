@@ -9,34 +9,35 @@
           <script async defer
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3DUM5CR4xb_xQeOKJ5ISMIskwBGxIloc&libraries=visualization&callback=initMap">
           </script>
-<script>
-function initMap() {
-  var map = new google.maps.Map(document.getElementById("map"), {
-    center: new google.maps.LatLng(44.6082, -79.4197),
-    zoom: 7,
-    mapTypeId: 'terrain'
-  });
+          <script>
+            function initMap() {
+              var map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(44.6082, -79.4197),
+                zoom: 7,
+                mapTypeId: 'terrain'
+              });
 
-  var heatmapData = [];
+              var heatmapData = [];
 
-  function mapData(lat, lng) {
-    var latLng = new google.maps.LatLng(lat, lng);
-    heatmapData.push(latLng);
-  }
-  var heatmap = new google.maps.visualization.HeatmapLayer({
-    data: heatmapData,
-    dissipating: true,
-    map: map
-  });
+              function mapData(lat, lng) {
+                var latLng = new google.maps.LatLng(lat, lng);
+                heatmapData.push(latLng);
+              }
+              var heatmap = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                dissipating: true,
+                map: map
+              });
 
-  <% @markers.each do |marker| %>
-    mapData(<%= marker.lat %>, <%= marker.lng%>);
-  <% end %>
-}
-</script>
-       <div class="text">
-          <p><%= @plant.description%></p>
-
+              <% @markers.each do |marker| %>
+                mapData(<%= marker.lat %>, <%= marker.lng%>);
+              <% end %>
+            }
+          </script>
+          <br>
+          <div class="text">
+            <p><%= @plant.description%></p>
+          </div>
         </div>
       </div>
     </div>
@@ -44,11 +45,12 @@ function initMap() {
 </div>
 <section class="testimonials"></section>
 <footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <h5>Jonathan and Noelle © 2016</h5></div>
-            <div class="col-sm-6 social-icons"></div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h5>Jonathan and Noelle © 2016</h5>
+      </div>
+      <div class="col-sm-6 social-icons"></div>
     </div>
+  </div>
 </footer>

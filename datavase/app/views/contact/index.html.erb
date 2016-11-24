@@ -1,2 +1,19 @@
-<h1>Contact#index</h1>
-<p>Find me in app/views/contact/index.html.erb</p>
+<div class="container-content">
+    <div class="container">
+        <%= form_tag(send_mail_path) do %>
+            <div class="form-group">
+                <%= label_tag 'name', 'Name' %>
+                <%= text_field_tag 'name', nil, class: 'form-control', placeholder: 'Your Name' %>
+            </div>
+           <div class="form-group">
+               <%= label_tag 'email', 'Email' %>
+               <%= email_field_tag 'email', nil, class: 'form-control', placeholder: 'Your Email Address' %>
+           </div>
+           <div class="form-group">
+               <%= label_tag 'comments', 'Comments' %>
+               <%= text_area_tag 'comments', nil, class: 'form-control', rows: 4, placeholder: 'Comments...' %>
+           </div>
+           <%= submit_tag nil, class: 'btn btn-default btn-about pull-right' %>
+       <% end %>
+  </div>
+</div>

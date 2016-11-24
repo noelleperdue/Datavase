@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'contact/index'
-
-  get 'resources/index'
-
-  get 'about/index'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'about#index'
 
@@ -15,5 +9,6 @@ Rails.application.routes.draw do
   resources :resources, only: [:index]
 
   resources :contact, only: [:index]
+  match '/send_mail', to: 'contact#send_mail', via: 'post'
 
 end
