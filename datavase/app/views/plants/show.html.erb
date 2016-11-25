@@ -38,6 +38,9 @@
           <div class="text">
             <p><%= @plant.description%></p>
           </div>
+          <% @image.each do |link| %>
+            <img src=<%=link.link%>></img>
+          <% end %>
         </div>
       </div>
     </div>

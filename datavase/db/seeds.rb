@@ -18,17 +18,32 @@ require 'csv'
 #   t.save
 # end
 
-MapMarker.destroy_all
+# MapMarker.destroy_all
+#
+# csv_text = File.read(Rails.root.join('lib', 'seeds', 'map.csv'))
+# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#   map = MapMarker.new
+#   map.lat = row['lat']
+#   map.lng = row['lng']
+#   name = row['name']
+#   plant = Plant.find_by_name(name)
+#   map.plant_id = plant.id
+#   map.save
+# end
+# puts "Map markers seeded successfully"
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'map.csv'))
+Image.destroy_all
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'links.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  map = MapMarker.new
-  map.lat = row['lat']
-  map.lng = row['lng']
+  img = Image.new
   name = row['name']
+  img.plant_name = name
+  img.link = row['link']
   plant = Plant.find_by_name(name)
-  map.plant_id = plant.id
-  map.save
+  img.plant_id = plant.id
+  img.save
 end
-puts "Map markers seeded successfully"
+puts "Images seeded successfully"
